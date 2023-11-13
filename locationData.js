@@ -1,4 +1,4 @@
-const locationsArray = [
+const states = [
     "Alabama",
     "Alaska",
     "American Samoa",
@@ -55,3 +55,56 @@ const locationsArray = [
     "Wisconsin",
     "Wyoming"
 ]
+
+const parkTypes = [
+    "National Park",
+    "National Monument",
+    "Recreation Area",
+    "Scenic Trail",
+    "Battlefield",
+    "Historic",
+    "Memorial",
+    "Preserve",
+    "Island",
+    "River",
+    "Seashore",
+    "Trail",
+    "Parkway"
+]
+
+let selcetedStatesEl = document.getElementById("select-states");
+let selectedParkTypesEl = document.getElementById("select-types")
+
+window.onload = () => {
+    populateStates();
+
+    // Populate Dropdown
+    selcetedStatesEl.onchange = () => {
+        let selectedParkTypesEl = document.getElementById("select-types");
+        selectedParkTypesEl.style.visibility = "visible";
+        selectedParkTypesEl.options.length = 0;
+
+        let option = new Option("Select One");
+        selectedParkTypesEl.appendChild(option);
+
+        // The loops are next
+        for(let types of parkTypes) {
+            let selectedType = states.value;
+            if(types.name === selectedType) {
+                let typeOption = new Option(types);
+                selectedParkTypesEl.appendChild(typeOption);
+            }
+        }
+    }
+};
+
+// Dropdown
+function populateStates() {
+    let selcetedStatesEl = document.getElementById("select-states")
+
+    for(let i=0;i<states.length; i++){
+        let stateNames = states[i];
+        let stateOptions = new Option(stateNames);
+        selcetedStatesEl.appendChild(stateOptions);
+    }
+}

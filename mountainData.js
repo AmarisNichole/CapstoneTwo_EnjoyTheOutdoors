@@ -1,4 +1,4 @@
-const mountainsArray = [
+const mountains = [
     {
         name: "Mt. Washington",
         elevation: 6288,
@@ -528,3 +528,10 @@ const mountainsArray = [
         }
     }
 ]
+
+let mountainInfoEl = document.getElementById("mountainInfo");
+
+window.onload = () => {
+    mountainPopulate();
+};
+
