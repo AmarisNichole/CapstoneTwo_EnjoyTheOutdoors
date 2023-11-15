@@ -6858,3 +6858,13 @@ const nationalParksArray = [
     }
     }
 ]
+
+const filterByPropEquals = (array, property, value) => {
+    return array.filter((state) => state[property] === value);
+  };
+  const filterByPropIncludes = (array, property, value) => {
+    return array.filter((state) => state[property].includes(value));
+  };
+  
+  console.log(filterByPropEquals(data.nationalParksArray, "State", "Utah")); // all parks with "State" of "Utah"
+  console.log(filterByPropIncludes(data.nationalParksArray, "LocationName", "National Park")); // all parks that have "National Park" in their "Location Name"

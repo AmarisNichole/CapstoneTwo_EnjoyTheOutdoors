@@ -8,14 +8,42 @@
 .heading {
     text-align: center;
     padding: 80px;
-    color: orangered;
+    color: rgb(79, 124, 12);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.image4 {
+.img {
+   display: block;
+   margin: 0 auto;
+   width: 1000px;
+}
+
+.p1 {
+    text-align: center;
+    background-color: #e3f2fd;
+    border-radius: 50px 50px 50px;
+    padding: 20px;
+}
+
+.img2 {
+    position: relative;
+    padding: 50px;
+    top: 15px;
+    width: 40%;
+}
+
+.img3 {
+    position: relative;
     float: right;
-    width: 20%;
+    padding: 50px;
+    top: 15px;
+    width: 40%;
+} 
+
+.p2 {
+    text-align: center;
+    background-color: #e3f2fd;
+    border-radius: 50px 50px 50px;
+    padding: 20px;
 }
 
-.image3 {
-   
-}

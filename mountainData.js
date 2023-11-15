@@ -529,9 +529,59 @@ const mountains = [
     }
 ]
 
-let mountainInfoEl = document.getElementById("mountainInfo");
+let mountainInfoEl = document.getElementById("mountain-info-select");
+let pTagEl = document.getElementById("pTag")
+let imgTagEl = document.getElementById("imgTag")
 
 window.onload = () => {
-    mountainPopulate();
+    populateMountain();
+
+    mountainInfoEl.onchange = () => {
+        let index = mountainInfoEl.selectedIndex;
+        // Clear previous option
+        pTagEl.innerHTML = "";
+        imgTagEl.innerHTML = "";
+        // What would my HTML look like?
+        // <div id="container"><h1></h1></div>
+
+        // Image
+        let imgContainer = document.createElement("div");
+        let imgBox = document.createElement("img");
+        imgBox.src = mountains[index].img;
+        imgBox.alt = mountains[index].name;
+        imgBox.width = 50;
+        imgContainer.appendChild(imgBox);
+        imgTagEl.appendChild(imgContainer);
+
+        // Name
+        let nameContainer = document.createElement("div");
+        let mountainName = document.createElement("h1");
+        mountainName.textContent = mountains[index].name;
+        nameContainer.appendChild(mountainName);
+        pTagEl.appendChild(nameContainer);
+
+        // Elevation
+        let elevationContainer = document.createElement("div");
+        let elevationNum = document.createElement("p");
+        elevationNum.textContent = mountains[index].elevation;
+        elevationContainer.appendChild(elevationNum);
+        pTagEl.appendChild(elevationContainer);
+
+        // Description
+        let descContainer = document.createElement("div");
+        let descBox = document.createElement("p");
+        descBox.textContent = mountains[index].desc;
+        descContainer.appendChild(descBox);
+        pTagEl.appendChild(descContainer);
+    }
 };
+
+function populateMountain(){
+    for(let i=0;i<mountains.length;i++){
+        let mountainLoop = mountains[i].name + "(" + mountains[i].effort +")";
+
+        let mountainOption = new Option(mountainLoop);
+        mountainInfoEl.appendChild(mountainOption);
+    }
+}
 
