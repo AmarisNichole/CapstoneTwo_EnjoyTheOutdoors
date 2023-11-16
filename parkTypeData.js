@@ -14,3 +14,21 @@ const parkTypesArray = [
     "Parkway"
 ]
 
+let parkDropdownEl = document.getElementById("parkDropdown");
+
+window.onload = ()=>{
+    parkLoop();
+
+    parkDropdownEl.onchange = ()=>{
+
+    }
+}
+
+function parkLoop(){
+    for(let i=0;i<parkTypes.length;i++){
+        let parks = parkTypes[i];
+
+        let parkCategory = new Option(parks);
+        parkDropdownEl.appendChild(parkCategory);
+    }
+}

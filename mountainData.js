@@ -530,8 +530,8 @@ const mountains = [
 ]
 
 let mountainInfoEl = document.getElementById("mountain-info-select");
-let pTagEl = document.getElementById("pTag")
-let imgTagEl = document.getElementById("imgTag")
+let pTagEl = document.getElementById("p-tag")
+let imgTagEl = document.getElementById("img-tag")
 
 window.onload = () => {
     populateMountain();
@@ -547,9 +547,9 @@ window.onload = () => {
         // Image
         let imgContainer = document.createElement("div");
         let imgBox = document.createElement("img");
-        imgBox.src = mountains[index].img;
+        imgBox.src = "/images/" + mountains[index].img;
         imgBox.alt = mountains[index].name;
-        imgBox.width = 50;
+        imgBox.width = 350;
         imgContainer.appendChild(imgBox);
         imgTagEl.appendChild(imgContainer);
 
@@ -575,7 +575,6 @@ window.onload = () => {
         pTagEl.appendChild(descContainer);
     }
 };
-
 function populateMountain(){
     for(let i=0;i<mountains.length;i++){
         let mountainLoop = mountains[i].name + "(" + mountains[i].effort +")";
