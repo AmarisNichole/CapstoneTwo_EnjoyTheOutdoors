@@ -6876,62 +6876,72 @@ const parkTypes = [
 ]
 
 let stateDropdownEl = document.getElementById("stateDropdown");
-const parkDropdownEl = document.getElementById("parkDropdown");
-
+let parkDropdownEl = document.getElementById("parkDropdown");
+let pTagEl = document.getElementById("pTag");
 
 stateDropdownEl.onchange = () => {
+  // let index = stateDropdownEl.selectedIndex;
 
-    let stateValue = stateDropdownEl.value;
-    console.log(stateValue)
-    let filterArray = nationalParks.filter((park) => park.State === stateValue);
+  pTagEl.innerHTML = '';
+
+  let stateValue = stateDropdownEl.value;
+  let filterArray = nationalParks.filter((park) => park.State === stateValue);
+
   // Append parks to the page itself
-}
+  filterArray.forEach((park) => {
+    let parkDiv = document.createElement("div");
+    let parkName = document.createElement("p");
+    // State Value in Array
+    parkName.textContent = park.State; 
+    let parkLocation = document.createElement("p");
+    // LocationNAme in Array
+    parkLocation.textContent = park.LocationName; 
+
+    parkDiv.appendChild(parkName);
+    parkDiv.appendChild(parkLocation);
+    pTagEl.appendChild(parkDiv);
+  });
+
+  // Console.Log
+  console.log(filterArray);
+};
 
 parkDropdownEl.onchange = () => {
+  let parkValue = parkDropdownEl.value;
 
-    let parkValue = parkDropdownEl.value;
-    console.log(parkValue)
-    // let ParkTypeArray = parkTypes.filter((state) => state.includes(parkValue));
+  // let ParkTypeArray = parkTypes.filter((state) => state.includes(parkValue));
 
-    // Compare Arrays
-
-    let filteredParks = nationalParks.filter((state) => state.LocationName.includes(parkValue));
-    // Push national parks???
-
-  // Append parks to the page itself
-
-  console.log(filteredParks)
-
-  
-}
-
-// Function to populate dropdown with options
-
+  // Compare Arrays
+  let filteredParks = nationalParks.filter((state) =>
+    state.LocationName.includes(parkValue)
+  );
+  console.log(filteredParks);
+}; 
+ // Function to populate dropdown with options
 const populateStateDropdown = (array) => {
- // Get the dropdown by ID
+  // Get the dropdown by ID
   array.forEach((state) => {
+    // ADD THIS LINE!!!
     let parkValue = parkDropdownEl.value;
-    parkTypes.state === parkValue;
+    parkTypes.State === parkValue;
 
-    const option = document.createElement('option');
- // Assign the value (you can use any unique identifier)
+    const option = document.createElement("option");
+    // Assign the value (you can use any unique identifier)
     option.textContent = state.State; // Assign the text content for the option
     stateDropdownEl.appendChild(option); // Add the option to the dropdown
   });
 };
 
 const populateDropdown = (array) => {
-
- //Loop Function 
+  // Get the dropdown by Strings
   array.forEach((parkName) => {
-    const parkOption = document.createElement('option');
-    parkOption.value = parkName
-    parkOption.textContent = parkName
-    parkDropdownEl.appendChild(parkOption)
-  })
-}
+    const parkOption = document.createElement("option");
+    parkOption.value = parkName;
+    parkOption.textContent = parkName;
+    parkDropdownEl.appendChild(parkOption);
+  });
+};
 
 // Call the function to populate the dropdown
 populateStateDropdown(nationalParks, 'stateDropdown');
-populateDropdown(parkTypes, 'myDropdown');  
-
+populateDropdown(parkTypes, 'myDropdown'); 
