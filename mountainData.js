@@ -547,7 +547,7 @@ window.onload = () => {
         // Image
         let imgContainer = document.createElement("div");
         let imgBox = document.createElement("img");
-        imgBox.src = "/images/" + mountains[index].img;
+        imgBox.src = "Images/" + mountains[index].img;
         imgBox.alt = mountains[index].name;
         imgBox.width = 350;
         imgContainer.appendChild(imgBox);
